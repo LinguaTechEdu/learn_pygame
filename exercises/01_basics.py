@@ -1,11 +1,13 @@
 # A little database we can use to check information
 database = ['King', 'cookies', 'street', 'rain', 'computer', 7]
 
+
 # Custom Functions
 def greet(name):
     """Given a name, return the greeting 'Nice to meet you, <name>'."""
     # Your code here
-    
+
+
 def convert_to_celcius(temp):
     """
     CHALLENGE!
@@ -30,7 +32,8 @@ def test(inpt, output):
     else:
         result = '==> \u2718 Fail'
     print("{0} - input: {1}, expected output: {2}".format(result, inpt, output))
-    
+
+
 def run_tests():
     """Test that our functions work the way we think they do."""
     print("Testing greet() ...")

@@ -29,18 +29,18 @@ while GAME_ON:
     # Complete the comparisons
     # Replace YOUR_COMPARISON_HERE that compares player choice with answer
     if tries >= 3:
-        print "Too many tries! The answer is: ", answer
+        print("Too many tries! The answer is: {}".format(answer))
         GAME_ON = False
     elif YOUR_COMPARISON_HERE:
         # If the player's choice is too high ...
-        print "Too high!"
+        print("Too high!")
         tries += 1
     elif YOUR_COMPARISON_HERE:
         # If the player's choice is too low ...
-        print "Too low!"
+        print("Too low!")
 
         # Increment the number of tries!
         tries += 1
     else:
-        print "CORRECT! YOU WIN!"
+        print("CORRECT! YOU WIN!")
         break

@@ -140,11 +140,11 @@ def drawLineBetween(screen, index, start, end, width, color_mode):
     dy = start[1] - end[1]
     iterations = max(abs(dx), abs(dy))
 
-    for i in xrange(iterations):
+    for i in range(iterations):
         progress = 1 * i / iterations
         aprogress = 1 - progress
-        x = aprogress * start[0] + progress * end[0]
-        y = aprogress * start[1] + progress * end[1]
+        x = int(aprogress * start[0] + progress * end[0])
+        y = int(aprogress * start[1] + progress * end[1])
 
         # Finally, we draw our brush strokes!
         pygame.draw.circle(screen, color, (x, y), width)

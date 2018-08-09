@@ -1,0 +1,4 @@
+pygame==1.9.3
+pylint==1.8.3
+six==1.11.0
+ipython==5.5.0

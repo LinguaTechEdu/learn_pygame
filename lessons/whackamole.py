@@ -5,9 +5,6 @@ that comes with pygame. It is based on a 'popular' web banner.
 Note there are comments here, but for the full explanation,
 follow along in the tutorial.
 """
-
-
-# Import Modules
 import os
 import pygame
 from pygame.locals import *
@@ -17,23 +14,25 @@ if not pygame.font: print ('Warning, fonts disabled')
 if not pygame.mixer: print ('Warning, sound disabled')
 
 main_dir = os.path.split(os.path.abspath(__file__))[0]  # lessons dir
-data_dir = os.path.join(main_dir, 'media')  # Not in use
+data_dir = os.path.join(main_dir, 'media')
 
+# ======================================
 # HELPER FUNCTIONS
-# ----------------
+# ======================================
 # Helper functions perform common tasks for you and work together to execute
 # more complex processes
 
 
 def load_image(name, colorkey=None):
     """Return a tuple with the image and it's area (size)."""
-    # fullname = os.path.join(data_dir, name)
     try:
         image = pygame.image.load(name)
     except pygame.error:
         print ('Cannot load image:', name)
         raise SystemExit(str(geterror()))
+
     image = image.convert()
+    image = pygame.transform.scale(image, (100, 100))
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0, 0))
@@ -54,9 +53,14 @@ def load_sound(name):
         raise SystemExit(str(geterror()))
     return sound
 
+# ======================================
+# Classes
+# ======================================
+# Classes help us organize our code!
+
 
 class Hammer(pygame.sprite.Sprite):
-    """moves a clenched fist on the screen, following the mouse"""
+    """A hammer to whack the moles with."""
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -64,14 +68,14 @@ class Hammer(pygame.sprite.Sprite):
         self.punching = 0
 
     def update(self):
-        "move the fist based on the mouse position"
+        """Move the fist based on the mouse position."""
         pos = pygame.mouse.get_pos()
         self.rect.midtop = pos
         if self.punching:
             self.rect.move_ip(5, 10)
 
     def punch(self, target):
-        "returns true if the fist collides with the target"
+        """returns true if the fist collides with the target"""
         if not self.punching:
             self.punching = 1
             hitbox = self.rect.inflate(-5, -5)
@@ -83,11 +87,12 @@ class Hammer(pygame.sprite.Sprite):
 
 
 class Mole(pygame.sprite.Sprite):
-    """moves a monkey critter across the screen. it can spin the
-       monkey when it is punched."""
+    """Our Mole that runs across the screen!"""
+
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self) #call Sprite intializer
+        pygame.sprite.Sprite.__init__(self)
         self.image, self.rect = load_image('media/mole2.jpg', -1)
+        pygame.transform.scale(self.image, (100, 100))
         screen = pygame.display.get_surface()
         self.area = screen.get_rect()
         self.rect.topleft = 10, 10

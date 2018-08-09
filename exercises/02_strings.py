@@ -3,9 +3,11 @@ def first_last(s):
     """Return the first and last letter of a string."""
     # Your code here
 
+
 def letter_swap(a,b):
     """Given two words, swap the first letter of each and return the new string."""
     # Your code here
+
 
 def censor(word):
     """
@@ -14,13 +16,15 @@ def censor(word):
     """
     # Your code here
 
+
 def counter():
     """
     Write a function that counts from 1 to 100. Return the numbers 
     divisble by 10. (10, 20, 30, 40)
     """
     # Your code here
-    
+
+
 # Testing Tools
 # The functions below help us test the functions we created above.
 def test(input, output):
@@ -32,7 +36,8 @@ def test(input, output):
     else:
         result = '==> \u2718 Fail'
     print("{0} - input: {1}, expected output: {2}".format(result, input, output))
-    
+
+
 def run_tests():
     """Test that our functions work the way we think they do."""
     print("Testing first_last() ...")
